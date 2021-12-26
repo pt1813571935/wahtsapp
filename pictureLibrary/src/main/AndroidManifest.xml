@@ -1,0 +1,21 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.easylib" >
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <uses-permission android:name="android.permission.CAMERA" />
+    <application android:allowBackup="true">
+
+        <activity
+            android:configChanges="orientation|screenSize"
+            android:name="com.giftedcat.picture.lib.selector.MultiImageSelectorActivity" />
+
+    </application>
+
+
+
+
+
+</manifest>
