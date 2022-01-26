@@ -10,7 +10,7 @@ android {
     }
     signingConfigs {
         release {
-            storeFile file('/Users/panting/Desktop/wahtsapp/whats.jks')
+            storeFile file('D:\\ptAndroid\\wahtsapp\\wahtsapp\\whats.jks')
             storePassword '123456'
             keyAlias 'key0'
             keyPassword '123456'
