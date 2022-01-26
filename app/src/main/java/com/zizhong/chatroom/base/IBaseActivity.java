@@ -1,7 +1,10 @@
 package com.zizhong.chatroom.base;
 
+import android.app.ActivityManager;
+import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -12,6 +15,13 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.trello.rxlifecycle.components.support.RxFragmentActivity;
+import com.umeng.analytics.MobclickAgent;
+import com.zizhong.chatroom.Utils.SharedPreferencesUtil;
+import com.zizhong.chatroom.googleadmob.Table;
+
+import org.greenrobot.eventbus.EventBus;
+
+import java.util.List;
 
 /**
  * FlymeCat保佑，永无BUG
@@ -20,6 +30,10 @@ import com.trello.rxlifecycle.components.support.RxFragmentActivity;
 public abstract class IBaseActivity extends RxFragmentActivity implements View.OnClickListener {
 
     private long time;
+    private boolean times= false;
+    private Table table;
+
+    public static boolean isActive; //全局变量
 
     @Override
     protected void onCreate( Bundle savedInstanceState) {
@@ -46,6 +60,13 @@ public abstract class IBaseActivity extends RxFragmentActivity implements View.O
         initData();
         initListener();
         initOther(savedInstanceState);
+
+        String ok = SharedPreferencesUtil.getSharedPreferences(this).getString("OK", "");
+        table = new Table();
+        if (ok.equals("123")) {
+
+            times =true;
+        }
     }
 
 
@@ -148,19 +169,54 @@ public abstract class IBaseActivity extends RxFragmentActivity implements View.O
         return ((ViewGroup) findViewById(android.R.id.content)).getChildAt(0);
     }
 
+
+    int screen=0;
+    int stopss=0;
+    boolean qiantai=false;
     @Override
     protected void onResume() {
         super.onResume();
+        MobclickAgent.onResume(this);
+        if (!isActive) {
+            //app 从后台唤醒，进入前台
+            isActive = true;
+            Log.e("ACTIVITY", "程序从后台唤醒");
+            screen = SharedPreferencesUtil.getSharedPreferences(this).getInt("screen", screen);
+            screen++;
+            SharedPreferencesUtil.getSharedPreferences(this).putInt("screen",screen);
+
+            String ok = SharedPreferencesUtil.getSharedPreferences(this).getString("OK", "");
+            if (screen%2==0&&qiantai==true&&ok.equals("123")){
+                table.gooles_show(this);
+                SharedPreferencesUtil.getSharedPreferences(this).remove("screen");
+                qiantai=false;
+            }
+            qiantai=true;
+
+        }
+
     }
 
     @Override
     protected void onPause() {
         super.onPause();
+
+        MobclickAgent.onPause(this);
+        if (!isActive) {
+            //app 从后台唤醒，进入前台
+            isActive = true;
+            Log.e("ACTIVITY", "程序从后台唤醒");
+            table.gooles_show(this);
+        }
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        if (table.mInterstitialAd != null){
+            table.mInterstitialAd = null;
+        }
+        EventBus.getDefault().unregister(this);
     }
 
     @Override
@@ -179,6 +235,52 @@ public abstract class IBaseActivity extends RxFragmentActivity implements View.O
         if (this != null) {
             return isDestroyed();
         }
+        return false;
+    }
+
+    @Override
+    protected void onStop() {
+        if (!isAppOnForeground()) {
+            //app 进入后台
+            isActive = false;//记录当前已经进入后台
+            Log.i("ACTIVITY", "程序进入后台");
+            stopss = SharedPreferencesUtil.getSharedPreferences(this).getInt("stopss", stopss);
+            stopss++;
+            String ok = SharedPreferencesUtil.getSharedPreferences(this).getString("OK", "");
+            if (ok.equals("123")&& times==true) {
+                if (stopss%2==0){
+                    table.gooles_add(this);
+
+                    SharedPreferencesUtil.getSharedPreferences(this).remove("stopss");
+                }
+
+
+            }
+        }
+        super.onStop();
+    }
+
+    /**
+     * APP是否处于前台唤醒状态
+     *
+     * @return
+     */
+    public boolean isAppOnForeground() {
+        ActivityManager activityManager = (ActivityManager) getApplicationContext().getSystemService(Context.ACTIVITY_SERVICE);
+        String packageName = getApplicationContext().getPackageName();
+        List<ActivityManager.RunningAppProcessInfo> appProcesses = activityManager
+                .getRunningAppProcesses();
+        if (appProcesses == null)
+            return false;
+
+        for (ActivityManager.RunningAppProcessInfo appProcess : appProcesses) {
+            // The name of the process that this object is associated with.
+            if (appProcess.processName.equals(packageName)
+                    && appProcess.importance == ActivityManager.RunningAppProcessInfo.IMPORTANCE_FOREGROUND) {
+                return true;
+            }
+        }
+
         return false;
     }
 }

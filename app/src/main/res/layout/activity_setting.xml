@@ -30,13 +30,22 @@
             android:textStyle="bold" />
 
     </RelativeLayout>
-
+    <com.google.android.gms.ads.AdView
+        xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/adView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        ads:adSize="BANNER"
+        android:layout_centerHorizontal="true"
+        ads:adUnitId="ca-app-pub-3936389342745068/8886806045"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"/>
     <ImageView
         android:layout_marginTop="23dp"
         android:layout_gravity="center_horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@mipmap/setting_top"></ImageView>
+        android:src="@mipmap/img_set"></ImageView>
 
     <RelativeLayout
         android:layout_marginLeft="16dp"
@@ -44,6 +53,7 @@
         android:layout_width="match_parent"
         android:layout_height="46dp">
         <TextView
+            android:id="@+id/txt_settings_privacyPolicy"
             android:layout_centerVertical="true"
             android:textSize="14sp"
             android:textColor="#666666"
@@ -71,6 +81,7 @@
         android:layout_width="match_parent"
         android:layout_height="46dp">
         <TextView
+            android:id="@+id/txt_settings_userAgreement"
             android:layout_centerVertical="true"
             android:textSize="14sp"
             android:textColor="#666666"
@@ -93,86 +104,6 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"></ImageView>
 
-    <RelativeLayout
-        android:layout_marginLeft="16dp"
-        android:layout_width="match_parent"
-        android:layout_height="46dp">
-        <TextView
-            android:layout_centerVertical="true"
-            android:textSize="14sp"
-            android:textColor="#666666"
-            android:text="Give a good comment"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"></TextView>
-
-        <ImageView
-            android:layout_marginEnd="16dp"
-            android:layout_centerVertical="true"
-            android:layout_alignParentRight="true"
-            android:src="@mipmap/setting_more"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"></ImageView>
-    </RelativeLayout>
-
-    <ImageView
-        android:background="#F6F6F6"
-        android:layout_marginLeft="16dp"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"></ImageView>
-
-    <RelativeLayout
-        android:layout_marginLeft="16dp"
-        android:layout_width="match_parent"
-        android:layout_height="46dp">
-        <TextView
-            android:layout_centerVertical="true"
-            android:textSize="14sp"
-            android:textColor="#666666"
-            android:text="Give a good comment"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"></TextView>
-
-        <ImageView
-            android:layout_marginEnd="16dp"
-            android:layout_centerVertical="true"
-            android:layout_alignParentRight="true"
-            android:src="@mipmap/setting_more"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"></ImageView>
-    </RelativeLayout>
-
-    <ImageView
-        android:background="#F6F6F6"
-        android:layout_marginLeft="16dp"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"></ImageView>
-
-    <RelativeLayout
-        android:layout_marginLeft="16dp"
-        android:layout_width="match_parent"
-        android:layout_height="46dp">
-        <TextView
-            android:layout_centerVertical="true"
-            android:textSize="14sp"
-            android:textColor="#666666"
-            android:text="Feedback"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"></TextView>
-
-        <ImageView
-            android:layout_marginEnd="16dp"
-            android:layout_centerVertical="true"
-            android:layout_alignParentRight="true"
-            android:src="@mipmap/setting_more"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"></ImageView>
-    </RelativeLayout>
-
-    <ImageView
-        android:background="#F6F6F6"
-        android:layout_marginLeft="16dp"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"></ImageView>
 
     <RelativeLayout
         android:layout_marginLeft="16dp"

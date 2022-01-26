@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".activitys.MainActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -47,6 +47,7 @@
 
     </RelativeLayout>
 
+
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tab_layout"
         android:layout_width="match_parent"
@@ -58,7 +59,16 @@
         app:tabIndicatorHeight="3dp"
         app:tabSelectedTextColor="@color/white"
         app:tabTextColor="@color/white" />
-
+    <com.google.android.gms.ads.AdView
+        xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/adView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        ads:adSize="BANNER"
+        android:layout_centerHorizontal="true"
+        ads:adUnitId="ca-app-pub-3936389342745068/8886806045"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"/>
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/view_page"
         android:layout_width="match_parent"

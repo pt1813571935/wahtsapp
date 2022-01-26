@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".activitys.MainActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -21,18 +21,19 @@
             android:textSize="25sp"
             android:textStyle="bold" />
 
-
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/txt_home_ad"
-        android:layout_width="match_parent"
-        android:layout_height="72dp"
+    <com.google.android.gms.ads.AdView
+        xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/adView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        ads:adSize="BANNER"
+        android:layout_centerHorizontal="true"
+        ads:adUnitId="ca-app-pub-3936389342745068/8886806045"
         android:layout_marginTop="20dp"
-        android:background="#D8D8D8"
-        android:gravity="center"
-        android:text="广告"
-        android:textStyle="bold" />
+        android:layout_gravity="center"/>
+
 
     <FrameLayout
         android:id="@+id/fl"
@@ -130,6 +131,7 @@
         android:orientation="horizontal">
 
         <FrameLayout
+            android:id="@+id/fl_rate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -140,7 +142,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginBottom="20dp"
-                android:src="@mipmap/img_share" />
+                android:src="@mipmap/img_like" />
 
             <TextView
                 android:id="@+id/tv_share"
@@ -148,7 +150,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom|center_horizontal"
                 android:layout_marginBottom="40dp"
-                android:text="Share us"
+                android:text="Rate us"
                 android:textColor="@android:color/white"
                 android:textSize="18sp" />
 

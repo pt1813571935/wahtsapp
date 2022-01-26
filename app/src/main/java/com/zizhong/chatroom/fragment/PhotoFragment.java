@@ -18,7 +18,8 @@ import com.luck.picture.lib.config.PictureConfig;
 import com.luck.picture.lib.config.PictureMimeType;
 import com.luck.picture.lib.entity.LocalMedia;
 import com.luck.picture.lib.listener.OnResultCallbackListener;
-import com.zizhong.chatroom.PhotoDetailActivity;
+import com.zizhong.chatroom.Utils.SharedPreferencesUtil;
+import com.zizhong.chatroom.activitys.PhotoDetailActivity;
 import com.zizhong.chatroom.R;
 import com.zizhong.chatroom.Utils.GlideEngine;
 import com.zizhong.chatroom.Utils.JsonDataUtils;
@@ -26,6 +27,7 @@ import com.zizhong.chatroom.Utils.log.LogUtils;
 import com.zizhong.chatroom.base.IBaseFragment;
 import com.zizhong.chatroom.entity.PhotoInfoEntity;
 import com.zizhong.chatroom.fragment.adapter.FragmentPhotoAdapter;
+import com.zizhong.chatroom.googleadmob.Table;
 import com.zizhong.chatroom.listener.IBaseDataChangeListener;
 import com.zizhong.chatroom.listener.IBaseOnItemClickListener;
 
@@ -44,6 +46,7 @@ public class PhotoFragment extends IBaseFragment {
     private IBaseDataChangeListener iBaseDataChangeListener;
     //1图片；2视频
     private int inputType = 1;
+    private Table table;
 
     @Override
     public int getLayoutId() {
@@ -86,6 +89,13 @@ public class PhotoFragment extends IBaseFragment {
         if (list != null && list.size() > 0) {
             mSelectList.addAll(list);
         }
+
+        String  ok = SharedPreferencesUtil.getSharedPreferences(getContext()).getString("OK", "");
+        table = new Table();
+        if (ok.equals("123")){
+            table.gooles_add(getContext());
+
+        }
     }
 
     @SuppressLint("ApplySharedPref")
@@ -120,6 +130,7 @@ public class PhotoFragment extends IBaseFragment {
                         .openGallery(inputType == 1 ? PictureMimeType.ofImage() : PictureMimeType.ofVideo())
                         .imageEngine(GlideEngine.createGlideEngine())
                         .forResult(PictureConfig.CHOOSE_REQUEST);
+                table.gooles_show(getContext());
                 break;
         }
     }

@@ -11,7 +11,6 @@ import android.widget.Toast;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.giftedcat.picture.lib.selector.MultiImageSelector;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.luck.picture.lib.PictureSelector;
@@ -19,7 +18,7 @@ import com.luck.picture.lib.config.PictureConfig;
 import com.luck.picture.lib.config.PictureMimeType;
 import com.luck.picture.lib.entity.LocalMedia;
 import com.luck.picture.lib.listener.OnResultCallbackListener;
-import com.zizhong.chatroom.PhotoDetailActivity;
+import com.zizhong.chatroom.activitys.PhotoDetailActivity;
 import com.zizhong.chatroom.R;
 import com.zizhong.chatroom.Utils.GlideEngine;
 import com.zizhong.chatroom.Utils.JsonDataUtils;
@@ -30,7 +29,6 @@ import com.zizhong.chatroom.fragment.adapter.FragmentPhotoAdapter;
 import com.zizhong.chatroom.listener.IBaseDataChangeListener;
 import com.zizhong.chatroom.listener.IBaseOnItemClickListener;
 
-import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;

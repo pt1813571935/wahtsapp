@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="#FAFAFA"
     android:orientation="vertical"
-    tools:context=".EmojiActivity">
+    tools:context=".activitys.EmojiActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -32,6 +32,16 @@
             android:textStyle="bold" />
 
     </RelativeLayout>
+    <com.google.android.gms.ads.AdView
+        xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/adView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        ads:adSize="BANNER"
+        android:layout_centerHorizontal="true"
+        ads:adUnitId="ca-app-pub-3936389342745068/8886806045"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"/>
 
 
     <GridView

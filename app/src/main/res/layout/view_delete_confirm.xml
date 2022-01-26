@@ -12,7 +12,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginRight="32dp"
         android:layout_weight="1"
-        android:text="Are u sure to deletethese photos？"
+        android:text="Are you sure you want to delete these？"
         android:textColor="#333333"
         android:textSize="14sp" />
 

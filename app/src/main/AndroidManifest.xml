@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.zizhong.chatroom">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -7,25 +8,42 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/icon_whatsapp"
         android:label="@string/app_name"
         android:requestLegacyExternalStorage="true"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/icon_whatsapp"
         android:supportsRtl="true"
         android:theme="@style/Theme.ChatRoom"
         android:usesCleartextTraffic="true">
-        <activity android:name=".LocalActivity" />
-        <activity android:name=".EmojiActivity" />
-        <activity android:name=".PhotoDetailActivity" />
-        <activity android:name=".WebViewActivity" />
-        <activity android:name=".SettingActivity" />
-        <activity android:name=".MainActivity">
+
+        <activity android:name=".activitys.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".activitys.PolicyActivity" />
+        <activity android:name=".activitys.AgreementActivity" />
+        <activity android:name=".activitys.LocalActivity" />
+        <activity android:name=".activitys.EmojiActivity" />
+        <activity android:name=".activitys.PhotoDetailActivity" />
+        <activity android:name=".activitys.WebViewActivity" />
+        <activity android:name=".activitys.SettingActivity" />
+
+        <!--谷歌广告-->
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-3936389342745068~6452214392"/>
+
+        <!--友盟统计-->
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="61c95fa4e0f9bb492bad280a" />
+        <meta-data
+            android:name="UMENG_CHANNEL"
+            android:value="${UMENG_CHANNEL_VALUE}" />
+
     </application>
 
 </manifest>
